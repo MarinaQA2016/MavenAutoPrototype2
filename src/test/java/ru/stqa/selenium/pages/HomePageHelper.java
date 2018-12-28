@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -24,7 +25,7 @@ public class HomePageHelper extends PageBase {
   @FindBy(xpath = "//span[contains(text(),'Create Account')]")
   WebElement createAccountButton;
 
-  @FindBy(xpath = "//span[contains(text(),'Go to Event list')]")
+  @FindBy(xpath = "//button[@class='mat-stroked-button']/span[@class='mat-button-wrapper']")
   WebElement goToEventListButton;
 
   @FindBy(xpath = "//span[contains(text(),'Filters')]")
@@ -39,7 +40,7 @@ public class HomePageHelper extends PageBase {
   public void waitUntilPageIsLoaded()
   {
     // waitUntilElementIsloaded(driver, By.xpath("//span[contains(text(),'Go to Event list')]"), 30);
-    waitUntilElementIsloaded(driver, goToEventListButton, 30);
+    waitUntilElementIsloaded(driver, goToEventListButton, 100);
   }
 
   public String getHeaderText()
@@ -80,8 +81,18 @@ public class HomePageHelper extends PageBase {
 
   public String verifyEventListButton()
   {
+    //goToEventListButton.click();
+    //driver.findElement(By.xpath("//button[@class='mat-stroked-button']/span[@class='mat-button-wrapper']")).click();
+    System.out.println(driver.findElement(By.xpath("//button[@class='mat-stroked-button']/span[@class='mat-button-wrapper']")).getText());
+
+    // position on one special element
+    Actions action = new Actions(driver);
+    action.moveToElement(goToEventListButton).build().perform();
+
     goToEventListButton.click();
-    waitUntilElementIsloaded(driver,eventsPage,500);
+    //driver.findElement(By.xpath("//button[@class='mat-stroked-button']/span[@class='mat-button-wrapper']")).click();
+    //return driver.findElement(By.xpath("//button[@class='mat-stroked-button']/span[@class='mat-button-wrapper']")).getText();
+     waitUntilElementIsloaded(driver,eventsPage,500);
     return eventsPage.getText();
   }
 
@@ -97,5 +108,17 @@ public class HomePageHelper extends PageBase {
     } catch (NoSuchElementException e) {
       return false;
     }
+  }
+
+  public HomePageHelper pressGoToEventButton()
+  {
+    goToEventListButton.click();
+    return this;
+  }
+
+  public HomePageHelper pressLoginButton()
+  {
+    loginButton.click();
+    return this;
   }
 }
