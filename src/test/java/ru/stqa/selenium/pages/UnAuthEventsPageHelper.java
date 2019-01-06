@@ -24,7 +24,6 @@ public class UnAuthEventsPageHelper extends PageBase
 
     public void waitUntilPageIsLoaded()
     {
-       //waitUntilElementIsloaded(driver,loginButton, 40);
        waitUntilElementIsloaded(driver, filterButton, 40);
     }
 

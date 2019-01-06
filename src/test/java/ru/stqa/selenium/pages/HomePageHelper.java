@@ -8,7 +8,6 @@ import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-import org.testng.Assert;
 
 /**
  * Sample page
@@ -37,10 +36,11 @@ public class HomePageHelper extends PageBase {
   }
 
 
-  public void waitUntilPageIsLoaded()
+  public HomePageHelper waitUntilPageIsLoaded()
   {
     // waitUntilElementIsloaded(driver, By.xpath("//span[contains(text(),'Go to Event list')]"), 30);
     waitUntilElementIsloaded(driver, goToEventListButton, 100);
+    return this;
   }
 
   public String getHeaderText()
@@ -96,9 +96,10 @@ public class HomePageHelper extends PageBase {
     return eventsPage.getText();
   }
 
-  public void cancelButton()
+  public HomePageHelper cancelButton()
   {
     driver.findElement(By.xpath("//span[contains(text(),'Cancel')]")).click();
+    return this;
   }
 
   public boolean isElementPresent(By locator) {
@@ -119,6 +120,12 @@ public class HomePageHelper extends PageBase {
   public HomePageHelper pressLoginButton()
   {
     loginButton.click();
+    return this;
+  }
+
+  public HomePageHelper pressCreateAccountButton()
+  {
+    createAccountButton.click();
     return this;
   }
 }

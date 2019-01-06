@@ -57,8 +57,8 @@ public class HomePageTests extends TestBase {
   @Test
   public void a_goToEventsPageTest()
   {
-      homepage.waitUntilPageIsLoaded();
-      homepage.pressGoToEventButton();
+      homepage.waitUntilPageIsLoaded()
+              .pressGoToEventButton();
       unAuthEventsPage.waitUntilPageIsLoaded();
 
       Assert.assertTrue(unAuthEventsPage.isHeaderCorrect("Find event"));
@@ -67,8 +67,8 @@ public class HomePageTests extends TestBase {
   @Test
   public void goLoginPageTest()
   {
-      homepage.waitUntilPageIsLoaded();
-      homepage.pressLoginButton();
+      homepage.waitUntilPageIsLoaded()
+              .pressLoginButton();
       loginPage.waitUntilElementIsloaded();
 
       Assert.assertTrue(loginPage.isLoginPageOpened());
@@ -78,8 +78,8 @@ public class HomePageTests extends TestBase {
   @Test
   public void goCreateAccountTest()
   {
-    homepage.waitUntilPageIsLoaded();
-    homepage.pressCreateAccountButton();
+    homepage.waitUntilPageIsLoaded()
+            .pressCreateAccountButton();
     createAccountPage.waitUntilElementIsloaded();
 
     Assert.assertTrue(createAccountPage.isCreateAccountPageOpened());
