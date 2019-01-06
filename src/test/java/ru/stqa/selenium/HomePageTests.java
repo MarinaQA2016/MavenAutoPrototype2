@@ -4,6 +4,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import ru.stqa.selenium.pages.CreateAccountPageHelper;
 import ru.stqa.selenium.pages.HomePageHelper;
 import ru.stqa.selenium.pages.LoginPageHelper;
 import ru.stqa.selenium.pages.UnAuthEventsPageHelper;
@@ -13,6 +14,7 @@ public class HomePageTests extends TestBase {
   private HomePageHelper homepage;
   private UnAuthEventsPageHelper unAuthEventsPage;
   private LoginPageHelper loginPage;
+  private CreateAccountPageHelper createAccountPage;
 
   @BeforeMethod
   public void initPageObjects()
@@ -20,6 +22,7 @@ public class HomePageTests extends TestBase {
     homepage = PageFactory.initElements(driver, HomePageHelper.class);
     unAuthEventsPage = PageFactory.initElements(driver, UnAuthEventsPageHelper.class);
     loginPage = PageFactory.initElements(driver, LoginPageHelper.class);
+    createAccountPage = PageFactory.initElements(driver,CreateAccountPageHelper.class);
     driver.get(baseUrl);
   }
 
@@ -52,7 +55,7 @@ public class HomePageTests extends TestBase {
   }
 
   @Test
-  public void AgoToEventsPageTest()
+  public void a_goToEventsPageTest()
   {
       homepage.waitUntilPageIsLoaded();
       homepage.pressGoToEventButton();
@@ -70,7 +73,16 @@ public class HomePageTests extends TestBase {
 
       Assert.assertTrue(loginPage.isLoginPageOpened());
 
+  }
 
+  @Test
+  public void goCreateAccountTest()
+  {
+    homepage.waitUntilPageIsLoaded();
+    homepage.pressCreateAccountButton();
+    createAccountPage.waitUntilElementIsloaded();
+
+    Assert.assertTrue(createAccountPage.isCreateAccountPageOpened());
   }
 
 
