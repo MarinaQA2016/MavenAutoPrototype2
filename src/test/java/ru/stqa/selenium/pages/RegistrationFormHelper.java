@@ -39,6 +39,7 @@ public class RegistrationFormHelper extends PageBase
     @FindBy(xpath = "//mat-select[@aria-label='Gender']/div")
     WebElement gender;
 
+
     @FindBy(xpath = "//mat-select[@formcontrolname='languages']")
     WebElement languages;
 
@@ -103,6 +104,7 @@ public class RegistrationFormHelper extends PageBase
         Actions action = new Actions(driver);
         action.moveToElement(gender).build().perform();
         gender.click();
+     //   new Select(driver.findElement(By.xpath("//span[@class='mat-option-text']"))).selectByVisibleText(value);
         driver.findElement(By.xpath("//span[contains(text(),'" + value + "')]")).click();
         return this;
     }

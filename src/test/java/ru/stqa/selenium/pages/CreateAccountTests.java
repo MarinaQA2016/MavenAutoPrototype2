@@ -50,6 +50,7 @@ public class CreateAccountTests extends TestBase
                 .selectConfession("Religious")
                 .selectMaritalStatus("Married")
                 .selectFood("Any")
+                .selectGender("Female")
                 .enterInfo("Hello!");
   //              .selectLanguage("Russian");
   //              .enterBirthday("10","JAN","2000");
