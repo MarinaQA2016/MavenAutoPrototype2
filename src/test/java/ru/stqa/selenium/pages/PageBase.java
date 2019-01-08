@@ -42,4 +42,21 @@ public abstract class PageBase {
     }
   }
 
+  public void enterValueToField(WebElement element,String value)
+  {
+    element.click();
+    element.clear();
+    element.sendKeys(value);
+  }
+
+  public void type2(WebElement element, String text, Boolean clear) {
+    if (text != null) {
+      element.click();
+      if (clear) {
+        element.clear();
+      }
+      element.sendKeys(text);
+    }
+  }
+
 }
